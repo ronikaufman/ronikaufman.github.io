@@ -5,3 +5,10 @@ html, body {
 canvas {
   display: block;
 }
+div {
+  color: white;
+  position: absolute;
+  background-color: rgb(10, 10, 10);
+  opacity: 0.9;
+  font-family: "Lucida Console", Courier, monospace;
+}
