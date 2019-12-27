@@ -6,9 +6,27 @@ canvas {
   display: block;
 }
 div {
-  color: white;
+  color: rgb(247, 243, 242);
   position: absolute;
   background-color: rgb(10, 10, 10);
   opacity: 0.9;
   font-family: "Lucida Console", Courier, monospace;
+}
+p {
+  font-size: 20px;
+  line-height: 30px;
+  margin-left: 20px;
+}
+
+a:link {
+  color: rgb(0, 119, 225);
+}
+a:visited {
+  color: rgb(252, 53, 3);
+}
+a:hover {
+  color: rgb(245, 210, 22);
+}
+a:active {
+  color: rgb(247, 243, 242);
 }

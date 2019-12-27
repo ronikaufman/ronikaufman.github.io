@@ -1,5 +1,3 @@
-// By Roni Kaufman
-
 let randInt = (a, b) => (floor(random(a, b)));
 
 function setup() {
@@ -16,14 +14,14 @@ function draw() {
 	let nRectangles = floor(width*height)/1000;
 	let maxW = randInt(6, 10);
 	let maxH = randInt(6, 10);
-	
+
 	let alpha = 225;
-	let colors = [color(10, 10, 10, alpha),
+	let colors = [color(10, 10, 10, alpha - 10),
 								color(247, 243, 242, alpha),
 								color(0, 119, 225, alpha),
 								color(245, 210, 22, alpha),
 								color(252, 53, 3, alpha)];
-	
+
 	background(colors[1]);
 	for (let i = 0; i < nRectangles; i++) {
 		fill(colors[floor(random(colors.length))]);
@@ -33,4 +31,8 @@ function draw() {
 		let h = randInt(1, maxH) * pixelSize;
 		rect(x, y, w, h);
 	}
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }
