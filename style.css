@@ -9,15 +9,22 @@ div {
   color: rgb(247, 243, 242);
   position: absolute;
   background-color: rgb(10, 10, 10);
-  opacity: 0.9;
-  font-family: "Lucida Console", Courier, monospace;
+  opacity: 0.95;
+  font-family: "Lucida Console", Monaco, monospace;
 }
+
 p {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 30px;
   margin-left: 20px;
 }
+h1, h2 {
+  margin-left: 20px;
+}
 
+a {
+  text-decoration: none;
+}
 a:link {
   color: rgb(0, 119, 225);
 }

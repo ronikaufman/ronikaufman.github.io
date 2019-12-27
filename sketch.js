@@ -16,7 +16,7 @@ function draw() {
 	let maxH = randInt(6, 10);
 
 	let alpha = 225;
-	let colors = [color(10, 10, 10, alpha - 10),
+	let colors = [color(10, 10, 10, alpha),
 								color(247, 243, 242, alpha),
 								color(0, 119, 225, alpha),
 								color(245, 210, 22, alpha),
