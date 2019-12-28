@@ -5,12 +5,31 @@ html, body {
 canvas {
   display: block;
 }
+
 div {
   color: rgb(247, 243, 242);
   position: absolute;
   background-color: rgb(10, 10, 10);
   opacity: 0.95;
   font-family: "Lucida Console", Monaco, monospace;
+}
+div#box1 {
+  /*left: 20px;*/
+  top: 20px;
+  width: 560px;
+  height: 240px;
+}
+div#box2 {
+  /*left: 20px;*/
+  top: 280px;
+  width: 520px;
+  height: 160px;
+}
+
+@media (min-width: 520px) {
+  div {
+    left: 20px;
+  }
 }
 
 p {
