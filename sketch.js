@@ -19,7 +19,7 @@ function draw() {
 	let colors = [color(10, 10, 10, alpha),
 								color(247, 243, 242, alpha),
 								color(0, 119, 225, alpha),
-								color(245, 210, 22, alpha),
+								color(250, 222, 12, alpha),
 								color(252, 53, 3, alpha)];
 
 	background(colors[1]);
