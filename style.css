@@ -7,11 +7,11 @@ canvas {
 }
 
 div {
-  color: rgb(247, 243, 242);
+  color: rgba(247, 243, 242, 1);
   position: absolute;
-  background-color: rgb(10, 10, 10);
-  opacity: 0.95;
+  background-color: rgba(10, 10, 10, 0.95);
   font-family: "Lucida Console", Monaco, monospace;
+  /*backdrop-filter: blur(5px);*/
 }
 div#box1 {
   /*left: 20px;*/
