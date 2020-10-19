@@ -1,3 +1,18 @@
+@font-face {
+  font-family: VictorMonoMed;
+  src: url(VictorMono/VictorMono-Medium.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoIt;
+  src: url(VictorMono/VictorMono-Italic.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoMedIt;
+  src: url(VictorMono/VictorMono-MediumItalic.woff2);
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -7,23 +22,23 @@ canvas {
 }
 
 div {
-  color: rgba(247, 243, 242, 1);
+  color: rgba(255, 232, 25);
   position: absolute;
-  background-color: rgba(10, 10, 10, 0.95);
-  font-family: "Lucida Console", Monaco, monospace;
+  background-color: rgba(0, 0, 0);
+  font-family: VictorMonoMed;
   /*backdrop-filter: blur(5px);*/
 }
 div#box1 {
   /*left: 20px;*/
   top: 20px;
-  width: 560px;
-  height: 240px;
+  width: 520px;
+  height: 300px;
 }
 div#box2 {
   /*left: 20px;*/
-  top: 280px;
+  top: 340px;
   width: 520px;
-  height: 160px;
+  height: 220px;
 }
 
 @media (min-width: 520px) {
@@ -39,20 +54,23 @@ p {
 }
 h1, h2 {
   margin-left: 20px;
+  font-family: VictorMonoIt;
 }
 
 a {
   text-decoration: none;
 }
 a:link {
-  color: rgb(0, 119, 225);
+  color: rgb(255, 232, 25);
+  text-decoration: underline;
 }
 a:visited {
-  color: rgb(252, 53, 3);
+  color: rgb(255, 232, 25);
 }
 a:hover {
-  color: rgb(250, 222, 12);
+  color: rgb(255, 232, 25);
+  font-family: VictorMonoMedIt;
 }
 a:active {
-  color: rgb(250, 222, 12);
+  color: rgb(255, 232, 25);
 }

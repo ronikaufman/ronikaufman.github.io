@@ -1,38 +1,71 @@
-let randInt = (a, b) => (floor(random(a, b)));
+// By Roni Kaufman
+// inspired by Vera Molnar's "Quatre éléments distribués au hasard" (1959)
+
+let composition = [];
+// 0: -
+// 1: /
+// 2: |
+// 3: \
+let size = 20; // size of each element
+let prev_i = -1;
+let prev_j = -1;
+
+let randInt = (x) => (floor(random(x)));
 
 function setup() {
-	createCanvas(windowWidth, windowHeight);
-	//colorMode(HSB, 100);
-	noLoop();
-	noStroke();
-}
+  createCanvas(windowWidth, windowHeight-1);
+  noLoop();
+	stroke(255, 232, 25);
+	//stroke(0);
+	strokeWeight(5);
 
-function draw() {
-	let pixelSize = 20;
-	let pixWidth = width/pixelSize;
-	let pixHeight = height/pixelSize;
-	let nRectangles = floor(width*height)/1000;
-	let maxW = randInt(6, 10);
-	let maxH = randInt(6, 10);
-
-	let alpha = 225;
-	let colors = [color(10, 10, 10, alpha),
-								color(247, 243, 242, alpha),
-								color(0, 119, 225, alpha),
-								color(250, 222, 12, alpha),
-								color(252, 53, 3, alpha)];
-
-	background(colors[1]);
-	for (let i = 0; i < nRectangles; i++) {
-		fill(colors[floor(random(colors.length))]);
-		let x = randInt(0, pixWidth) * pixelSize;
-		let y = randInt(0, pixHeight) * pixelSize;
-		let w = randInt(1, maxW) * pixelSize;
-		let h = randInt(1, maxH) * pixelSize;
-		rect(x, y, w, h);
+	for (let i = 0; i < width/size; i++) {
+		composition.push([]);
+		for (let j = 0; j < height/size; j++) {
+			composition[i].push(randInt(4));
+		}
 	}
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+function draw() {
+	background(0);
+	//background(255, 232, 25);
+  drawComposition();
+}
+
+function drawComposition() {
+	for (let i = 0; i < width/size; i++) {
+		for (let j = 0; j < height/size; j++) {
+			let x = i * size;
+			let y = j * size;
+			switch (composition[i][j]) {
+				case 0:
+					strokeCap(SQUARE);
+					line(x, y + size/2, x + size, y + size/2);
+					break;
+				case 1:
+					strokeCap(PROJECT);
+					line(x, y + size, x + size, y);
+					break;
+				case 2:
+					strokeCap(SQUARE);
+					line(x + size/2, y, x + size/2, y + size);
+					break;
+				case 3:
+					strokeCap(PROJECT);
+					line(x, y, x + size, y + size);
+			}
+		}
+	}
+}
+
+function mouseMoved() {
+	let i = floor(mouseX/size);
+	let j = floor(mouseY/size);
+	if (i !== prev_i || j !== prev_j) {
+		composition[i][j] = randInt(4);
+		draw();
+		prev_i = i;
+		prev_j = j;
+	}
 }
