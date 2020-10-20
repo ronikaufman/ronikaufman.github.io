@@ -13,7 +13,10 @@ let prev_j = -1;
 let randInt = (x) => (floor(random(x)));
 
 function setup() {
-  createCanvas(windowWidth, max(windowHeight, 960));
+  let greetings = select('#greetings');
+  greetings.html(generateGreetings());
+
+  createCanvas(windowWidth, max(windowHeight-1, 740));
   noLoop();
 	stroke(255, 232, 25);
 	//stroke(0);
@@ -57,6 +60,12 @@ function drawComposition() {
 			}
 		}
 	}
+}
+
+function generateGreetings() {
+  let word1 = random(["Hey", "Hi", "Hello"]);
+  let word2 = random(["", " there"]);
+  return word1+word2+"!";
 }
 
 function mouseMoved() {

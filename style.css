@@ -21,6 +21,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-color: rgba(0, 0, 0);
 }
 canvas {
   display: block;
@@ -37,29 +38,32 @@ div#box1 {
   /*left: 20px;*/
   top: 20px;
   width: 520px;
-  height: 300px;
+  height: 280px;
   /*border: 2px solid rgba(255, 232, 25);*/
 }
 div#box2 {
-  /*left: 20px;*/
-  top: 340px;
+  top: 320px;
   width: 520px;
   height: 200px;
 }
 div#box3 {
-  /*left: 20px;*/
-  top: 560px;
+  top: 540px;
+  /*
+  top: 20px;
+  left: 560px;
+  */
   width: 520px;
   height: 180px;
 }
+/*
 div#box4 {
-  /*left: 20px;*/
-  top: 760px;
+  top: 740px;
   width: 520px;
   height: 180px;
 }
+*/
 
-@media (min-width: 520px) {
+@media (min-width: 560px) {
   div {
     left: 20px;
   }
@@ -67,7 +71,7 @@ div#box4 {
 
 p {
   font-size: 18px;
-  line-height: 30px;
+  /*line-height: 30px;*/
   margin-left: 20px;
 }
 h1, h2 {
