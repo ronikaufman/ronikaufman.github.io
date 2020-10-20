@@ -13,7 +13,7 @@ let prev_j = -1;
 let randInt = (x) => (floor(random(x)));
 
 function setup() {
-  createCanvas(windowWidth, windowHeight-1);
+  createCanvas(windowWidth, max(windowHeight, 960));
   noLoop();
 	stroke(255, 232, 25);
 	//stroke(0);

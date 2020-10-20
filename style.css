@@ -13,6 +13,11 @@
   src: url(VictorMono/VictorMono-MediumItalic.woff2);
 }
 
+@font-face {
+  font-family: VictorMonoMedOb;
+  src: url(VictorMono/VictorMono-MediumOblique.woff2);
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -33,12 +38,25 @@ div#box1 {
   top: 20px;
   width: 520px;
   height: 300px;
+  /*border: 2px solid rgba(255, 232, 25);*/
 }
 div#box2 {
   /*left: 20px;*/
   top: 340px;
   width: 520px;
-  height: 220px;
+  height: 200px;
+}
+div#box3 {
+  /*left: 20px;*/
+  top: 560px;
+  width: 520px;
+  height: 180px;
+}
+div#box4 {
+  /*left: 20px;*/
+  top: 760px;
+  width: 520px;
+  height: 180px;
 }
 
 @media (min-width: 520px) {
@@ -55,6 +73,9 @@ p {
 h1, h2 {
   margin-left: 20px;
   font-family: VictorMonoIt;
+}
+quote {
+  font-family: VictorMonoMedOb;
 }
 
 a {
