@@ -15,6 +15,7 @@ let randInt = (x) => (floor(random(x)));
 function setup() {
   let greetings = select('#greetings');
   greetings.html(generateGreetings());
+  console.log(greetings.html())
 
   createCanvas(windowWidth, max(windowHeight-1, 740));
   noLoop();
