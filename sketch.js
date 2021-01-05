@@ -20,7 +20,7 @@ function setup() {
   noLoop();
 	stroke(255, 232, 25);
 	//stroke(0);
-	strokeWeight(5);
+	strokeWeight(4);
 
 	for (let i = 0; i < width/size; i++) {
 		composition.push([]);
