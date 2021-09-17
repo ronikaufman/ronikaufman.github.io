@@ -1,0 +1,101 @@
+@font-face {
+  font-family: VictorMonoMed;
+  src: url(VictorMono/VictorMono-Medium.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoIt;
+  src: url(VictorMono/VictorMono-Italic.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoMedIt;
+  src: url(VictorMono/VictorMono-MediumItalic.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoMedOb;
+  src: url(VictorMono/VictorMono-MediumOblique.woff2);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0);
+}
+canvas {
+  display: block;
+}
+
+div {
+  color: rgba(255, 232, 25);
+  position: absolute;
+  background-color: rgba(0, 0, 0);
+  font-family: VictorMonoMed;
+  /*backdrop-filter: blur(5px);*/
+}
+div#box1 {
+  /*left: 20px;*/
+  top: 20px;
+  width: 520px;
+  height: 260px;
+  /*border: 2px solid rgba(255, 232, 25);*/
+}
+div#box2 {
+  top: 300px;
+  width: 520px;
+  height: 180px;
+}
+div#box3 {
+  top: 500px;
+  /*
+  top: 20px;
+  left: 560px;
+  */
+  width: 520px;
+  height: 160px;
+}
+/*
+div#box4 {
+  top: 740px;
+  width: 520px;
+  height: 180px;
+}
+*/
+
+@media (min-width: 560px) {
+  div {
+    left: 20px;
+  }
+}
+
+p {
+  font-size: 18px;
+  /*line-height: 30px;*/
+  margin-left: 20px;
+}
+h1, h2 {
+  margin-left: 20px;
+  font-family: VictorMonoIt;
+}
+quote {
+  font-family: VictorMonoMedOb;
+}
+
+a {
+  text-decoration: none;
+}
+a:link {
+  color: rgb(255, 232, 25);
+  text-decoration: underline;
+}
+a:visited {
+  color: rgb(255, 232, 25);
+}
+a:hover {
+  color: rgb(255, 232, 25);
+  font-family: VictorMonoMedIt;
+}
+a:active {
+  color: rgb(255, 232, 25);
+}
