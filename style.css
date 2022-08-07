@@ -32,6 +32,7 @@ div {
   position: absolute;
   background-color: rgba(0, 0, 0);
   font-family: VictorMonoMed;
+  /*border: 2px solid rgba(255, 232, 25);*/
   /*backdrop-filter: blur(5px);*/
 }
 div#box1 {
@@ -39,7 +40,6 @@ div#box1 {
   top: 20px;
   width: 520px;
   height: 260px;
-  /*border: 2px solid rgba(255, 232, 25);*/
 }
 div#box2 {
   top: 300px;
