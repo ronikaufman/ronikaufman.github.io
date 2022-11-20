@@ -1,80 +1,167 @@
 // By Roni Kaufman
-// inspired by Vera Molnar's "Quatre éléments distribués au hasard" (1959)
 
-let composition = [];
-// 0: -
-// 1: /
-// 2: |
-// 3: \
-let size = 20; // size of each element
-let prev_i = -1;
-let prev_j = -1;
+let M, N; // number of tiles in width and height
+let s; // grid unit square size
 
-let randInt = (x) => (floor(random(x)));
+let palette = ["#abcd5e", "#62b6de", "#f589a3", "#ef562f", "#fc8405", "#f9d531"];
+let baseColors = ["#050505", "#fffbe6"];
+let possibilities = [0, 1, 2];
+let colorMode;
 
 function setup() {
   let greetings = select('#greetings');
   greetings.html(generateGreetings());
 
-  createCanvas(windowWidth, max(windowHeight-1, 680));
-  noLoop();
-	stroke(255, 232, 25);
-	//stroke(0);
-	strokeWeight(4);
+  let links = selectAll(".colorMe");
+  let linkColors = shuffle(palette);
+  for (let i = 0; i < links.length; i++) {
+    links[i].style("color", linkColors[i%linkColors.length]);
+  }
 
-	for (let i = 0; i < width/size; i++) {
-		composition.push([]);
-		for (let j = 0; j < height/size; j++) {
-			composition[i].push(randInt(4));
-		}
-	}
+  if (random() < 3/4) {
+    shuffle(possibilities, true);
+    possibilities.pop();
+  }
+  colorMode = random([0, 1]);
+
+  initParams();
+  createCanvas(M*s, N*s);
+  noLoop();
+  noStroke();
 }
 
 function draw() {
-	background(0);
-	//background(255, 232, 25);
-  drawComposition();
+	for (let i = 0; i < M; i++) {
+    for (let j = 0; j < N; j++) {
+      fill(random(palette));
+      makeTile(i*s, j*s);
+    }
+  }
 }
 
-function drawComposition() {
-	for (let i = 0; i < width/size; i++) {
-		for (let j = 0; j < height/size; j++) {
-			let x = i * size;
-			let y = j * size;
-			switch (composition[i][j]) {
-				case 0:
-					strokeCap(SQUARE);
-					line(x, y + size/2, x + size, y + size/2);
-					break;
-				case 1:
-					strokeCap(PROJECT);
-					line(x, y + size, x + size, y);
-					break;
-				case 2:
-					strokeCap(SQUARE);
-					line(x + size/2, y, x + size/2, y + size);
-					break;
-				case 3:
-					strokeCap(PROJECT);
-					line(x, y, x + size, y + size);
-			}
-		}
-	}
+function initParams() {
+  N = 10;
+  s = windowHeight/N;
+  M = N;
+  while (M*s + 400 > windowWidth) M--;
 }
 
 function generateGreetings() {
   let word1 = random(["Hey", "Hi", "Hello"]);
   let word2 = random(["", " there"]);
-  return word1+word2+"!";
+  let punctuation = random(["!", " :)"])
+  return word1+word2+punctuation;
 }
 
-function mouseMoved() {
-	let i = floor(mouseX/size);
-	let j = floor(mouseY/size);
-	if (i !== prev_i || j !== prev_j) {
-		composition[i][j] = randInt(4);
-		draw();
-		prev_i = i;
-		prev_j = j;
-	}
+function windowResized() {
+  initParams();
+  resizeCanvas(M*s, N*s);
+}
+
+function makeTile(x, y) {
+  push();
+  translate(x+s/2, y+s/2);
+  rotate(random([0, PI/2, PI, 3*PI/2]));
+  translate(-x-s/2, -y-s/2);
+
+  let u = s/5;
+
+  let r = random(possibilities);
+  if (r == 0) {
+    fill(baseColors[1]);
+    square(x, y, s);
+
+    fill(baseColors[0]);
+    arc(x, y, 4*u, 4*u, 0, PI/2);
+    arc(x+s, y, 2*u, 2*u, PI/2, PI);
+    arc(x+s, y, 4*u, 4*u, PI/2, PI);
+    arc(x+s, y+s, 2*u, 2*u, PI, 3*PI/2);
+    arc(x+s, y+s, 4*u, 4*u, PI, 3*PI/2);
+    arc(x, y+s, 2*u, 2*u, 3*PI/2, TAU);
+    arc(x, y+s, 4*u, 4*u, 3*PI/2, TAU);
+    circle(x+s/2, y+s/2, 2*u);
+
+    fill(baseColors[1]);
+    arc(x, y+s, 2*u, 2*u, 3*PI/2, TAU);
+    arc(x+s, y+s, 2*u, 2*u, PI, 3*PI/2);
+    arc(x+s, y, 2*u, 2*u, PI/2, PI);
+    arc(x, y, 2*u, 2*u, 0, PI/2);
+  } else if (r == 1) {
+    fill(baseColors[0]);
+    square(x, y, s);
+
+    fill(baseColors[1]);
+    arc(x, y, 6*u, 6*u, 0, PI/2);
+    arc(x+s, y, 2*u, 2*u, PI/2, PI);
+    arc(x+s, y+s, 6*u, 6*u, PI, 3*PI/2);
+    arc(x, y+s, 2*u, 2*u, 3*PI/2, TAU);
+
+    fill(baseColors[0]);
+    arc(x, y, 4*u, 4*u, 0, PI/2);
+    arc(x+s, y+s, 4*u, 4*u, PI, 3*PI/2);
+
+    fill(baseColors[1]);
+    arc(x+s, y+s, 2*u, 2*u, PI, 3*PI/2);
+    arc(x, y, 2*u, 2*u, 0, PI/2);
+  } else if (r == 2) {
+    fill(baseColors[1]);
+    square(x, y, s);
+
+    fill(baseColors[0]);
+    arc(x, y, 8*u, 8*u, 0, PI/2);
+    arc(x+s, y+3*u/2, u, u, PI/2, 3*PI/2);
+    arc(x+3*u/2, y+s, u, u, PI, TAU);
+    arc(x+s, y+s, 4*u, 4*u, PI, 3*PI/2);
+
+    fill(baseColors[1]);
+    arc(x, y, 6*u, 6*u, 0, PI/2);
+    arc(x+s, y+s, 2*u, 2*u, PI, 3*PI/2);
+
+    fill(baseColors[0]);
+    arc(x, y, 4*u, 4*u, 0, PI/2);
+
+    fill(baseColors[1]);
+    arc(x, y, 2*u, 2*u, 0, PI/2);
+  } else {
+
+  }
+
+  fill(baseColors[0]);
+  circle(x+3*u/2, y, u);
+  circle(x+7*u/2, y, u);
+  circle(x+s, y+3*u/2, u);
+  circle(x+s, y+7*u/2, u);
+  circle(x+3*u/2, y+s, u);
+  circle(x+7*u/2, y+s, u);
+  circle(x, y+3*u/2, u);
+  circle(x, y+7*u/2, u);
+
+  fill(baseColors[1]);
+  circle(x, y, 2*u);
+  circle(x+s, y, 2*u);
+  circle(x, y+s, 2*u);
+  circle(x+s, y+s, 2*u);
+
+  if (colorMode == 0) {
+    fill(random(palette));
+    circle(x, y, u);
+    fill(random(palette));
+    circle(x+s, y, u);
+    fill(random(palette));
+    circle(x, y+s, u);
+    fill(random(palette));
+    circle(x+s, y+s, u);
+  }
+
+  fill(baseColors[1]);
+  if (colorMode == 1) fill(random(palette));
+  circle(x+s/2, y, u);
+  if (colorMode == 1) fill(random(palette));
+  circle(x+s, y+s/2, u);
+  if (colorMode == 1) fill(random(palette));
+  circle(x+s/2, y+s, u);
+  if (colorMode == 1) fill(random(palette));
+  circle(x, y+s/2, u);
+
+  pop();
 }

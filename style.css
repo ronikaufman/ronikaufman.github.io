@@ -18,84 +18,85 @@
   src: url(VictorMono/VictorMono-MediumOblique.woff2);
 }
 
+@font-face {
+  font-family: VictorMonoReg;
+  src: url(VictorMono/VictorMono-Regular.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoSB;
+  src: url(VictorMono/VictorMono-SemiBold.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoSBIt;
+  src: url(VictorMono/VictorMono-SemiBoldItalic.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoBIt;
+  src: url(VictorMono/VictorMono-BoldItalic.woff2);
+}
+
+@font-face {
+  font-family: VictorMonoB;
+  src: url(VictorMono/VictorMono-Bold.woff2);
+}
+
+:root {
+  --background-color: #050505;
+  --text-color: #fffbe6;
+}
+
 html, body {
   margin: 0;
   padding: 0;
-  background-color: rgba(0, 0, 0);
+  background-color: var(--background-color);
+  display: flex;
 }
 canvas {
   display: block;
+  float: right;
 }
 
-div {
-  color: rgba(255, 232, 25);
-  position: absolute;
-  background-color: rgba(0, 0, 0);
-  font-family: VictorMonoMed;
-  /*border: 2px solid rgba(255, 232, 25);*/
-  /*backdrop-filter: blur(5px);*/
-}
-div#box1 {
-  /*left: 20px;*/
-  top: 20px;
-  width: 520px;
-  height: 260px;
-}
-div#box2 {
-  top: 300px;
-  width: 520px;
-  height: 180px;
-}
-div#box3 {
-  top: 500px;
-  /*
-  top: 20px;
-  left: 560px;
-  */
-  width: 520px;
-  height: 160px;
-}
-/*
-div#box4 {
-  top: 740px;
-  width: 520px;
-  height: 180px;
-}
-*/
-
-@media (min-width: 560px) {
-  div {
-    left: 20px;
-  }
+div.block {
+  color: var(--text-color);
+  /*position: absolute;*/
+  font-family: VictorMonoSB;
+  margin-left: 2em;
+  margin-right: 2em;
+  /*flex: 50%;*/
+  width: auto;
+  height: 100%;
+  float: left;
 }
 
 p {
-  font-size: 18px;
-  /*line-height: 30px;*/
-  margin-left: 20px;
+  font-size: 1.15rem;
 }
+
 h1, h2 {
-  margin-left: 20px;
-  font-family: VictorMonoIt;
+  font-family: VictorMonoBIt;
 }
-quote {
-  font-family: VictorMonoMedOb;
+h1 {
+  margin-top: 1em;
+  font-size: 1.75rem;
+}
+h2 {
+  font-size: 1.5rem;
 }
 
 a {
   text-decoration: none;
+  color: var(--text-color);
 }
 a:link {
-  color: rgb(255, 232, 25);
   text-decoration: underline;
 }
-a:visited {
-  color: rgb(255, 232, 25);
-}
 a:hover {
-  color: rgb(255, 232, 25);
-  font-family: VictorMonoMedIt;
+  font-family: VictorMonoSBIt;
 }
-a:active {
-  color: rgb(255, 232, 25);
+
+b {
+  font-family: VictorMonoSB;
 }
