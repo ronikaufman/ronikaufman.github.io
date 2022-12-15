@@ -25,7 +25,7 @@ function setup() {
   colorMode = random([0, 1]);
 
   initParams();
-  createCanvas(M*s, N*s);
+  createCanvas(M*s, N*s-1);
   noLoop();
   noStroke();
 }
@@ -55,7 +55,7 @@ function generateGreetings() {
 
 function windowResized() {
   initParams();
-  resizeCanvas(M*s, N*s);
+  resizeCanvas(M*s, N*s-1);
 }
 
 function makeTile(x, y) {
