@@ -54,21 +54,25 @@ html, body {
   background-color: var(--background-color);
   display: flex;
 }
-canvas {
-  display: block;
-  float: right;
-}
 
-div.block {
+#left-block {
   color: var(--text-color);
   /*position: absolute;*/
   font-family: VictorMonoSB;
   margin-left: 2em;
   margin-right: 2em;
   /*flex: 50%;*/
-  width: auto;
+  width: 100%;
   height: 100%;
   float: left;
+}
+
+#right-block {
+  display: block;
+  float: right;
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
 
 p {

@@ -6,7 +6,7 @@ let s; // grid unit square size
 let palette = ["#abcd5e", "#62b6de", "#f589a3", "#ef562f", "#fc8405", "#f9d531"];
 let baseColors = ["#050505", "#fffbe6"];
 let possibilities = [0, 1, 2];
-let colorMode;
+let colorMode, mySeed;
 
 function setup() {
   let greetings = select('#greetings');
@@ -23,14 +23,19 @@ function setup() {
     possibilities.pop();
   }
   colorMode = random([0, 1]);
+  mySeed = ~~random(100000);
 
   initParams();
-  createCanvas(M*s, N*s-1);
+  let myCanvas = createCanvas(M*s, N*s-1);
+  myCanvas.parent("right-block");
+  setWidthOfLeftBlock();
+  
   noLoop();
   noStroke();
 }
 
 function draw() {
+  randomSeed(mySeed);
 	for (let i = 0; i < M; i++) {
     for (let j = 0; j < N; j++) {
       fill(random(palette));
@@ -46,16 +51,24 @@ function initParams() {
   while (M*s + 400 > windowWidth) M--;
 }
 
-function generateGreetings() {
-  let word1 = random(["Hey", "Hi", "Hello"]);
-  let word2 = random(["", " there"]);
-  let punctuation = random(["!", " :)"])
-  return word1+word2+punctuation;
+function setWidthOfLeftBlock() {
+  let left_block_elt = document.getElementById('left-block');
+  let marginStr = window.getComputedStyle(left_block_elt)["margin-left"];
+  let marginVal = marginStr.slice(0, marginStr.length-2);
+  left_block_elt.style.width = windowWidth-width-2*marginVal + "px";
 }
 
 function windowResized() {
   initParams();
   resizeCanvas(M*s, N*s-1);
+  setWidthOfLeftBlock();
+}
+
+function generateGreetings() {
+  let word1 = random(["Hey", "Hi", "Hello"]);
+  let word2 = random(["", " there"]);
+  let punctuation = random(["!", " :)"])
+  return word1+word2+punctuation;
 }
 
 function makeTile(x, y) {
