@@ -12,7 +12,7 @@ function setup() {
   let greetings = select('#greetings');
   greetings.html(generateGreetings());
 
-  let links = selectAll(".colorMe");
+  let links = selectAll(".colorMe").concat(selectAll("a"));
   let linkColors = shuffle(palette);
   for (let i = 0; i < links.length; i++) {
     links[i].style("color", linkColors[i%linkColors.length]);
@@ -62,6 +62,11 @@ function windowResized() {
   initParams();
   resizeCanvas(M*s, N*s-1);
   setWidthOfLeftBlock();
+}
+
+function mouseClicked() {
+  mySeed = ~~random(100000);
+  redraw();
 }
 
 function generateGreetings() {
