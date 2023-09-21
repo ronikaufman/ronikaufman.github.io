@@ -55,7 +55,7 @@ html, body {
   display: flex;
 }
 
-#left-block {
+#text-block {
   color: var(--text-color);
   /*position: absolute;*/
   font-family: VictorMonoSB;
@@ -67,7 +67,7 @@ html, body {
   float: left;
 }
 
-#right-block {
+#art-block {
   display: block;
   float: right;
   position: fixed;

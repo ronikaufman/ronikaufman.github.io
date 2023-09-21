@@ -27,8 +27,9 @@ function setup() {
 
   initParams();
   let myCanvas = createCanvas(M*s, N*s-1);
-  myCanvas.parent("right-block");
-  setWidthOfLeftBlock();
+  myCanvas.parent("art-block");
+  myCanvas.mouseClicked(newComposition);
+  setWidthOfTextBlock();
   
   noLoop();
   noStroke();
@@ -44,27 +45,49 @@ function draw() {
   }
 }
 
-function initParams() {
-  N = 10;
-  s = windowHeight/N;
-  M = N;
-  while (M*s + 400 > windowWidth) M--;
+function isMobileDevice() {
+  // adapted from https://www.geeksforgeeks.org/how-to-detect-whether-the-website-is-being-opened-in-a-mobile-device-or-a-desktop-in-javascript/
+
+  /* Storing user's device details in a variable*/
+  let details = navigator.userAgent;
+
+  /* Creating a regular expression
+  containing some mobile devices keywords
+  to search it in details string*/
+  let regexp = /android|iphone|kindle|ipad/i;
+
+  /* Using test() method to search regexp in details
+  it returns boolean value*/
+  return regexp.test(details);
 }
 
-function setWidthOfLeftBlock() {
-  let left_block_elt = document.getElementById('left-block');
-  let marginStr = window.getComputedStyle(left_block_elt)["margin-left"];
+function initParams() {
+  if (isMobileDevice()) {
+    M = 1;
+    N = 20;
+    s = windowHeight/N;
+  } else {
+    M = 10;
+    N = M;
+    s = windowHeight/N;
+    while (M*s + 400 > windowWidth) M--;
+  }
+}
+
+function setWidthOfTextBlock() {
+  let text_block_elt = document.getElementById('text-block');
+  let marginStr = window.getComputedStyle(text_block_elt)["margin-left"];
   let marginVal = marginStr.slice(0, marginStr.length-2);
-  left_block_elt.style.width = windowWidth-width-2*marginVal + "px";
+  text_block_elt.style.width = windowWidth-width-2*marginVal + "px";
 }
 
 function windowResized() {
   initParams();
   resizeCanvas(M*s, N*s-1);
-  setWidthOfLeftBlock();
+  setWidthOfTextBlock();
 }
 
-function mouseClicked() {
+function newComposition() {
   mySeed = ~~random(100000);
   redraw();
 }
