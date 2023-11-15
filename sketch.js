@@ -63,8 +63,8 @@ function isMobileDevice() {
 
 function initParams() {
   if (isMobileDevice()) {
-    M = 1;
-    N = 20;
+    M = 0;
+    N = 0;
     s = windowHeight/N;
   } else {
     M = 10;

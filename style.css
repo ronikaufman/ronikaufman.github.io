@@ -58,7 +58,7 @@ html, body {
 #text-block {
   color: var(--text-color);
   /*position: absolute;*/
-  font-family: VictorMonoSB;
+  font-family: VictorMonoMed;
   margin-left: 2em;
   margin-right: 2em;
   /*flex: 50%;*/
@@ -80,7 +80,7 @@ p {
 }
 
 h1, h2 {
-  font-family: VictorMonoBIt;
+  font-family: VictorMonoMedIt;
 }
 h1 {
   margin-top: 1em;
@@ -98,9 +98,9 @@ a:link {
   text-decoration: underline;
 }
 a:hover {
-  font-family: VictorMonoSBIt;
+  font-family: VictorMonoMedIt;
 }
 
 b {
-  font-family: VictorMonoSB;
+  font-family: VictorMonoMed;
 }
