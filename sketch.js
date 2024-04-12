@@ -12,10 +12,12 @@ function setup() {
   let greetings = select('#greetings');
   greetings.html(generateGreetings());
 
-  let links = selectAll(".colorMe").concat(selectAll("a"));
-  let linkColors = shuffle(palette);
-  for (let i = 0; i < links.length; i++) {
-    links[i].style("color", linkColors[i%linkColors.length]);
+  let toBeColored = selectAll(".colorMe").concat(selectAll("a"));
+  let colors = shuffle(palette);
+  let i = 0;
+  for (let el of toBeColored) {
+    el.style("color", colors[i%colors.length]);
+    if (el.class() != "noIncrement") i++;
   }
 
   if (random() < 3/4) {
@@ -163,8 +165,6 @@ function makeTile(x, y) {
 
     fill(baseColors[1]);
     arc(x, y, 2*u, 2*u, 0, PI/2);
-  } else {
-
   }
 
   fill(baseColors[0]);
