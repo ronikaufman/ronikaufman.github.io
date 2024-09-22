@@ -78,7 +78,7 @@ html, body {
 }
 
 p {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 h1, h2 {
@@ -86,10 +86,10 @@ h1, h2 {
 }
 h1 {
   margin-top: 1em;
-  font-size: 1.75rem;
+  font-size: 24px;
 }
 h2 {
-  font-size: 1.5rem;
+  font-size: 20px;
 }
 
 a {
@@ -108,5 +108,5 @@ b {
 }
 
 br {
-  margin-bottom: 0.3em;
+  margin-bottom: 0.4em;
 }
